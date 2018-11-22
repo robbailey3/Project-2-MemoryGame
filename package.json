@@ -1,0 +1,23 @@
+{
+  "name": "project-2-memorygame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robbailey3/Project-2-MemoryGame.git"
+  },
+  "author": "Rob Bailey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robbailey3/Project-2-MemoryGame/issues"
+  },
+  "homepage": "https://github.com/robbailey3/Project-2-MemoryGame#readme",
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-google": "^0.11.0"
+  }
+}
