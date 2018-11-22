@@ -1,14 +1,14 @@
 * {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 /* Fonts */
 html,
 body {
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 18px;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 18px;
 }
 h1,
 h2,
@@ -16,58 +16,126 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Rokkitt', serif;
+  font-family: 'Rokkitt', serif;
 }
 input,
 select,
 textarea,
 button {
-    font-family: inherit;
-    font-size: 18px;
+  font-family: inherit;
+  font-size: 18px;
 }
 /* General Elements */
 .modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
-    padding: 16px;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+  padding: 16px;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .btn {
-    background: #B20020;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    cursor: pointer;
-    font-family: 'Titillium Web', sans-serif;
-    margin: 10px;
-    padding: 8px 12px;
+  background: #b20020;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Titillium Web', sans-serif;
+  margin: 10px;
+  padding: 8px 12px;
 }
-
+.flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
 /* Header */
 
 /* Game Options */
 .game-options {
-    -webkit-transform: scale(1) translate(-50%, -50%);
-    -ms-transform: scale(1) translate(-50%, -50%);
-    transform: scale(1) translate(-50%, -50%);
-    -webkit-transition: 0.6s cubic-bezier(.8, -0.2, 0.2, 1.2);
-    -o-transition: 0.6s cubic-bezier(.8, -0.2, 0.2, 1.2);
-    transition: 0.6s cubic-bezier(.8, -0.2, 0.2, 1.2);
+  -webkit-transform: scale(1) translate(-50%, -50%);
+  -ms-transform: scale(1) translate(-50%, -50%);
+  transform: scale(1) translate(-50%, -50%);
+  -webkit-transition: 0.6s cubic-bezier(0.8, -0.2, 0.2, 1.2);
+  -o-transition: 0.6s cubic-bezier(0.8, -0.2, 0.2, 1.2);
+  transition: 0.6s cubic-bezier(0.8, -0.2, 0.2, 1.2);
+}
+#game-grid {
+  max-width: 75%;
+  margin: auto;
+}
+#game-grid.cards-4 {
+  max-width: 50%;
+}
+#game-grid .card-container {
+  position: relative;
+  margin: 20px 2.5%;
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
+#game-grid.cards-4 .card-container {
+  width: 20%;
+}
+
+#game-grid.cards-6 .card-container {
+  width: 11.66666%;
+}
+#game-grid .card-container img {
+  max-width: 100%;
+  -webkit-transition: 0.8s;
+  -o-transition: 0.8s;
+  transition: 0.8s;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+#game-grid .card-front {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url('../img/card-front.png');
+  background-repeat: repeat;
+  background-position: 50%;
+}
+#game-grid .card-back {
+  width: 100%;
+  height: 100%;
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  opacity: 0;
+}
+#game-grid .flipped .card-back {
+  opacity: 1;
+  -webkit-transform: rotateY(0);
+  transform: rotateY(0);
+}
+#game-grid .flipped .card-front {
+  opacity: 0;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+#timer-container {
+  position: absolute;
+  background: red;
+  padding: 16px;
+  border-radius: 8px;
+}
 /* Hidden Elements */
 /* Declaring this last so it doesn't get overridden */
 .hidden {
-    /* Set transform so it can be animated on re-entry */
-    -webkit-transform: scale(0) translateY(1000px);
-    -ms-transform: scale(0) translateY(1000px);
-    transform: scale(0) translateY(1000px);
-    /* Visability: hidden so it cannot be selected by the keyboard */
-    visibility: hidden;
+  /* Set transform so it can be animated on re-entry */
+  -webkit-transform: scale(0) translateY(1000px);
+  -ms-transform: scale(0) translateY(1000px);
+  transform: scale(0) translateY(1000px);
+  /* Visability: hidden so it cannot be selected by the keyboard */
+  visibility: hidden;
 }
