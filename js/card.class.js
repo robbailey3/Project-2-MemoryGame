@@ -1,14 +1,28 @@
 class Card {
   constructor(cardData, instance) {
     this.cardData = cardData;
-    this.container = document.createElement('div');
-    this.container.classList.add(['card-container']);
-    // this.container.id = cardData.name + '-' + instance;
-    this.cardFront = document.createElement('div');
-    this.cardFront.className = 'card-front';
-    this.cardBack = document.createElement('img');
-    this.cardBack.src = `img/${cardData.img}`;
-    this.cardBack.className = 'card-back';
-    this.container.append(this.cardFront, this.cardBack);
+    this.html = this.createCardContainer();
+    this.html.append(this.createCardFront(), this.createCardBack());
+  }
+  createCardContainer(){
+    const cardContainer = document.createElement('div');
+    cardContainer.classList.add('card-container');
+    return cardContainer;
+  }
+  createCardFront() {
+    const cardFront = document.createElement('div');
+    const img = document.createElement('img');
+    cardFront.classList.add('card-front');
+    img.src = './img/card-front.png';
+    cardFront.appendChild(img);
+    return cardFront;
+  }
+  createCardBack() {
+    const cardBack = document.createElement('div');
+    const img = document.createElement('img');
+    cardBack.classList.add('card-back');
+    img.src = `./img/${this.cardData.img}`;
+    cardBack.appendChild(img);
+    return cardBack;
   }
 }

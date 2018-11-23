@@ -8,6 +8,9 @@
   const hideModal = () => {
     document.querySelector('.game-options').style.display = 'none';
   };
+  const showModal = () => {
+    document.querySelector('.game-options').style.display = 'block';    
+  }
   document.querySelector('#easy-start').addEventListener('click', () => {
     hideModal();
     game.init(GAME_HOST, levels.easy);
@@ -20,4 +23,8 @@
     hideModal();
     game.init(GAME_HOST, levels.hard);
   });
+  document.querySelector('#reset-game').addEventListener('click', () => {
+    game.endGame();
+    showModal();
+  })
 })();

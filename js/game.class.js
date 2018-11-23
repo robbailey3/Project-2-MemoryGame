@@ -2,6 +2,7 @@ class Game {
   constructor() {
     this.selectedCards = [];
     this.matches = 0;
+    this.moves = 0;
   }
   init(selector, level) {
     this.host = document.querySelector(selector);
@@ -38,46 +39,80 @@ class Game {
   }
   addCardsToHost() {
     this.cards.forEach(card => {
-      this.host.append(card.container);
-      card.container.addEventListener('click', () => {
+      this.host.append(card.html);
+      card.html.addEventListener('click', () => {
         this.handleClick(card);
       });
     });
   }
+  startGame() {
+    this.gameRunning = true;
+    this.moves = 0;
+    this.startTimer();
+  }
+  endGame() {
+    this.gameRunning = false;
+    this.endTimer();
+  }
   handleClick(card) {
     if (!this.gameRunning) {
-      this.gameRunning = true;
-      this.startTimer();
+      // Start the game on first click
+      this.startGame();
     }
-    const cardEl = card.container;
+    const cardEl = card.html;
     if (cardEl.classList.contains('flipped')) {
       return;
     }
     cardEl.classList.add('flipped');
     this.selectedCards.push(card);
+    /* When two cards are selected, update the move counter and check for a match */
     if (this.selectedCards.length === 2) {
-      if (this.selectedCards[0].cardData == this.selectedCards[1].cardData) {
-        // We have a match
-        this.matches++;
-        if (this.matches === this.level.pairs) {
-          alert('WINNER!!');
-        }
-        this.selectedCards = [];
-      } else {
-        // Got it wrong
-        setTimeout(() => {
-          this.selectedCards.forEach(card => {
-            card.container.classList.remove('flipped');
-          });
-          this.selectedCards = [];
-        }, 1000);
-      }
+      this.updateMoveCounter();
+      this.checkForMatch();
     }
+  }
+  checkForMatch() {
+    console.log('Checking for match');
+    if (this.selectedCards[0].cardData == this.selectedCards[1].cardData) {
+      // We have a match
+
+      this.matches++;
+      console.log("Matches: " + this.matches);
+      console.log("Pairs: " + this.level.pairs);
+      if (this.matches === this.level.pairs) {
+        this.gameComplete();
+      }
+      this.selectedCards = [];
+    } else {
+      this.selectedCards.forEach(card => {
+        card.html.classList.add('incorrect');
+      });
+      // Got it wrong
+      setTimeout(() => {
+        this.selectedCards.forEach(card => {
+          card.html.classList.remove('incorrect');
+          card.html.classList.remove('flipped');
+        });
+        this.selectedCards = [];
+      }, 1000);
+    }
+  }
+  updateMoveCounter() {
+    this.moves++;
+    document.getElementById('moves').innerHTML = this.moves;
+  }
+  gameComplete(){
+    alert('WINNER!!!');
+    this.endTimer();
   }
   startTimer() {
     this.timer.startTimer();
-    setInterval(() => {
+    this.timerInterval = setInterval(() => {
       document.getElementById('timer').innerHTML = this.timer.getCurrentTime();
     }, 1000);
+  }
+  endTimer() {
+    this.timer.endTimer();
+    clearInterval(this.timerInterval);
   }
 }

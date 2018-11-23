@@ -8,4 +8,7 @@ class Timer {
   getCurrentTime() {
     return Math.floor((new Date() - this.startTime) / 1000);
   }
+  getTimeDifference() {
+    return Math.floor((this.endTime - this.startTime) / 1000);
+  }
 }
