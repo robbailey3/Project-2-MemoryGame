@@ -17,19 +17,20 @@
   </head>
 
   <body>
+    </div>
+    <div class="game-options modal">
+      <h2>New Game</h2>
+      <div class="options-container">
+        <button class="btn" id="easy-start">Easy</button>
+        <button class="btn" id="normal-start">Normal</button>
+        <button class="btn" id="hard-start">Hard</button>
+      </div>
+    </div>
+    <div id="main-content" class="blurred">
     <header><h1>Memory Game</h1></header>
     <section id="game-container">
       <div id="reset-container">
         <button id="reset-game">Restart</button>
-      </div>
-      <div class="game-options modal">
-        <h2>New Game</h2>
-        <div class="options-container">
-          <button class="btn" id="easy-start">Easy</button>
-          <button class="btn" id="normal-start">Normal</button>
-          <button class="btn" id="hard-start">Hard</button>
-        </div>
-      </div>
       <div id="game-grid" class="flex-container"></div>
       <div id="timer-container"><p>Time Elapsed: <span id="timer"></span></p></div>
       <div id="move-counter"><p><span id="moves"></span> Moves</p></div>
@@ -42,6 +43,7 @@
         </div>
       </div>
     </footer>
+  </div>
     <!-- Load the main script at the bottom so it doesn't run too soon. -->
     <script src="./js/main.js"></script>
   </body>

@@ -7,9 +7,11 @@
   };
   const hideModal = () => {
     document.querySelector('.game-options').style.display = 'none';
+    document.querySelector('#main-content').classList.remove('blurred');
   };
   const showModal = () => {
-    document.querySelector('.game-options').style.display = 'block';    
+    document.querySelector('.game-options').style.display = 'block'; 
+    document.querySelector('#main-content').classList.add('blurred');
   }
   document.querySelector('#easy-start').addEventListener('click', () => {
     hideModal();

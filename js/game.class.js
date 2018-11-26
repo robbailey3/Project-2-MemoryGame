@@ -75,7 +75,9 @@ class Game {
     console.log('Checking for match');
     if (this.selectedCards[0].cardData == this.selectedCards[1].cardData) {
       // We have a match
-
+      this.selectedCards.forEach((card) => {
+        card.html.classList.add('flash');
+      })
       this.matches++;
       console.log("Matches: " + this.matches);
       console.log("Pairs: " + this.level.pairs);

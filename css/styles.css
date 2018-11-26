@@ -9,6 +9,7 @@ html,
 body {
   font-family: 'Titillium Web', sans-serif;
   font-size: 18px;
+  background: #fafafa;
 }
 h1,
 h2,
@@ -34,12 +35,18 @@ button {
   -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
   padding: 16px;
-  background: #fafafa;
+  background: #fff;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   /* So the modal appears above other content */
   z-index: 999; 
+}
+.blurred{
+  filter: blur(1px) grayscale(1);
+}
+#main-content{
+  transition: .8s;
 }
 .btn {
   background: #b20020;
@@ -59,7 +66,13 @@ button {
   flex-wrap: wrap;
 }
 /* Header */
-
+header{
+  padding: 16px;
+  background: #0099FF;
+}
+header h1{
+  color: #fefefe
+}
 /* Game Options */
 .game-options {
   -webkit-transform: scale(1) translate(-50%, -50%);
@@ -90,6 +103,7 @@ button {
   padding: 20px;
   cursor: pointer;
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
+  background: #fff;
 }
 #game-grid .card-container img {
   max-width: 100%;
@@ -131,17 +145,19 @@ button {
   transform: rotateY(180deg);
 }
 #game-grid .incorrect{
-  animation-name: wiggle;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
+  animation: wiggle 1s 1;
+}
+#game-grid .flash{
+  animation: flash .5s 1;
 }
 #timer-container {
   position: absolute;
-  background: red;
-  padding: 16px;
-  border-radius: 8px;
   top: 25px;
   right: 25px;
+  background: #fafafa;
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.5);
+  padding: 16px;
+  border-radius: 8px;
 }
 /* Hidden Elements */
 /* Declaring this last so it doesn't get overridden */
@@ -173,5 +189,15 @@ button {
   }
 }
 @keyframes flash{
-
+  0%{
+    transform: scale(1);
+  }
+  60%{
+    transform: scale(1.1);
+    filter: brightness(125%);
+  }
+  100%{
+    transform: scale(1);
+    filter: brightness(1);
+  }
 }
