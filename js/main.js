@@ -1,9 +1,6 @@
 (function() {
   const GAME_HOST = '#game-grid'; // The selector of the HTML element which will contain the game content
   const game = new Game();
-  const clickHandler = $event => {
-    game.handleClick($event);
-  };
   const hideModal = () => {
     document.querySelector('#game-options').style.display = 'none';
     document.querySelector('#main-content').classList.remove('blurred');
@@ -27,5 +24,12 @@
   document.querySelector('#reset-game').addEventListener('click', () => {
     game.endGame();
     showModal();
+  });
+  document.querySelector('#stats-reset').addEventListener('click', () => {
+    game.hideGameCompleteModal();
+    showModal();
+  });
+  document.querySelector('#view-highscores').addEventListener('click', () => {
+    game.showHighscores();
   });
 })();

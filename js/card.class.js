@@ -1,5 +1,5 @@
 class Card {
-  constructor(cardData, instance) {
+  constructor(cardData) {
     this.cardData = cardData;
     this.html = this.createCardContainer();
     this.html.append(this.createCardFront(), this.createCardBack());

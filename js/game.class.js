@@ -1,12 +1,15 @@
 class Game {
   constructor() {
     this.timer = new Timer();
+  }
+  reset(){
     this.selectedCards = [];
     this.tempCards = [];
-    this.matches = 0;
     this.moves = 0;
+    this.matches = 0;
   }
   init(selector, level) {
+    this.reset();
     this.host = document.querySelector(selector);
     this.level = level;
     this.gameRunning = false;
@@ -22,8 +25,8 @@ class Game {
       this.level.pairs === 12 ? 6 : 4
     }`;
     for (let i = 0; i < this.level.pairs; i++) {
-      this.cards.push(new Card(cards[i], 1));
-      this.cards.push(new Card(cards[i], 2));
+      this.cards.push(new Card(cards[i]));
+      this.cards.push(new Card(cards[i]));
     }
     this.shuffle();
   }
@@ -48,19 +51,20 @@ class Game {
     });
   }
   startGame() {
+    // Reset all of the counters and start the game
     this.gameRunning = true;
     this.moves = 0;
     this.incorrectMoves = 0;
     this.cards.forEach(card => {
       card.html.classList.remove('animate');
     });
-    document.querySelector('#stats-container').classList.add('active');
+    this.showStatsModal();
     this.startTimer();
   }
   endGame() {
     this.gameRunning = false;
     this.endTimer();
-    document.querySelector('#stats-container').classList.remove('active');
+    this.hideStatsModal();
   }
   handleClick(card) {
     if (!this.gameRunning) {
@@ -80,28 +84,36 @@ class Game {
     }
   }
   checkForMatch() {
+    console.log(this);
     if (this.selectedCards[0].cardData == this.selectedCards[1].cardData) {
       // We have a match
-      this.selectedCards.forEach(card => {
-        card.html.classList.add('flash');
-      });
-      this.matches++;
-      if (this.matches === this.level.pairs) {
-        this.gameComplete();
-      }
-      this.selectedCards = [];
+      this.handleCorrectMove();
     } else {
-      this.incorrectMove();
+      this.handleIncorrectMove();
     }
   }
-  incorrectMove() {
+  handleCorrectMove() {
+    this.selectedCards.forEach(card => {
+      card.html.classList.add('flash'); // Add the class for the animations
+    });
+    this.matches++; // Incremenet the match counter
+    if (this.matches === this.level.pairs) {
+      // If the user has found all the matches, the game is complete.
+      this.gameComplete();
+    }
+    this.selectedCards = [];
+  }
+  handleIncorrectMove() {
+    /*
+     * Add the selected cards to a temporary array so they can be animated without blocking the user continuing.
+     */
     this.tempCards.push(...this.selectedCards);
     this.selectedCards = [];
-    // Got it wrong
     this.incorrectMoves++;
     this.tempCards.forEach(card => {
       card.html.classList.add('incorrect');
     });
+    // Show the flipped cards for 1 second prior to flipping back
     setTimeout(() => {
       this.tempCards.forEach(card => {
         card.html.classList.remove('incorrect');
@@ -112,28 +124,65 @@ class Game {
   }
   updateMoveCounter() {
     this.moves++;
-    document.getElementById('moves').innerHTML = this.moves;
+    document.querySelector('#moves').innerText = this.moves;
   }
   gameComplete() {
     this.endTimer();
-    document.getElementById('game-complete').style.display = 'block';
-    addTextToEl('#number-of-moves', this.moves);
-    document.getElementById('incorrect-moves').innerText = this.incorrectMoves;
-    document.getElementById(
-      'time-taken'
+    this.hideStatsModal();
+    this.gameCompleteModal();
+  }
+  gameCompleteModal() {
+    this.showGameCompleteModal();
+    document.querySelector('#number-of-moves').innerText = this.moves;
+    document.querySelector('#incorrect-moves').innerText = this.incorrectMoves;
+    document.querySelector(
+      '#time-taken'
     ).innerText = this.timer.getTimeDifference();
+    this.storeHighScore();
   }
   startTimer() {
     this.timer.startTimer();
     this.timerInterval = setInterval(() => {
-      document.getElementById('timer').innerHTML = this.timer.getCurrentTime();
+      document.querySelector('#timer').innerHTML = this.timer.getCurrentTime();
     }, 1000);
   }
   endTimer() {
     this.timer.endTimer();
     clearInterval(this.timerInterval);
   }
+  storeHighScore() {
+    this.storedScores = JSON.parse(localStorage.getItem('highscores')) || {
+      Easy: 0,
+      Medium: 0,
+      Hard: 0
+    };
+    const currentLevelName = this.level.name;
+    if (
+      this.storedScores[currentLevelName] === 0 ||
+      this.moves < this.storedScores[currentLevelName]
+    ) {
+      this.storedScores[currentLevelName] = this.moves;
+    }
+    localStorage.setItem('highscores', JSON.stringify(this.storedScores));
+  }
+  showHighscores() {
+    document.querySelector('#highscores').style.display = 'block';
+    document.querySelector('#easy-score').innerText = this.storedScores.Easy;
+    document.querySelector(
+      '#medium-score'
+    ).innerText = this.storedScores.Medium;
+    document.querySelector('#hard-score').innerText = this.storedScores.Hard;
+  }
+  showGameCompleteModal() {
+    document.querySelector('#game-complete').style.display = 'block';
+  }
+  hideGameCompleteModal() {
+    document.querySelector('#game-complete').style.display = 'none';
+  }
+  showStatsModal() {
+    document.querySelector('#stats-container').classList.add('active');
+  }
+  hideStatsModal() {
+    document.querySelector('#stats-container').classList.remove('active');
+  }
 }
-const addTextToEl = (elRef, text) => {
-  document.querySelector(elRef).innerText = text;
-};

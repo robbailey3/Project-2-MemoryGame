@@ -31,7 +31,7 @@
             <p>Time Elapsed: <span id="timer"></span> seconds</p>
           </div>
           <div id="move-counter">
-            <p>Number of Moves: <span id="moves">0</span></p>
+            <p>Total Moves: <span id="moves">0</span></p>
           </div>
         </div>
         <div id="game-grid" class="flex-container"></div>
@@ -71,6 +71,13 @@
         <p>
           <strong>Incorrect Moves: </strong><span id="incorrect-moves"></span>
         </p>
+        <button id="stats-reset" class="btn">New Game</button>
+        <button id="view-highscores" class="btn">View Highscores</button>
+        <div id="highscores">
+          <p><strong>Easy: </strong><span id="easy-score"></span></p>
+          <p><strong>Medium: </strong><span id="medium-score"></span></p>
+          <p><strong>Hard: </strong><span id="hard-score"></span></p>
+        </div>
       </div>
     </div>
     <!-- Load the main script at the bottom so it doesn't run too soon. -->

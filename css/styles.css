@@ -52,8 +52,8 @@ button {
   padding-bottom: 68px;
 }
 .btn {
-  background: #ff7000;
-  border: none;
+  background: #0D47A1;
+  border: 2px solid #fff;
   border-radius: 6px;
   color: #fff;
   cursor: pointer;
@@ -222,6 +222,14 @@ header #subtitle {
 #game-grid .flash {
   -webkit-animation: flash 0.5s 1;
   animation: flash 0.5s 1;
+}
+#highscores{
+  display: none;
+  width: 100%;
+}
+#highscores strong{
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 /* Footer */
 footer {
