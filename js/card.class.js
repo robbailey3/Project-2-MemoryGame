@@ -4,7 +4,7 @@ class Card {
     this.html = this.createCardContainer();
     this.html.append(this.createCardFront(), this.createCardBack());
   }
-  createCardContainer(){
+  createCardContainer() {
     const cardContainer = document.createElement('div');
     cardContainer.classList.add('card-container');
     return cardContainer;

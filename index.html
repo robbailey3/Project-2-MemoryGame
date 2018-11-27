@@ -7,7 +7,7 @@
     <title>Project 2: Rob Bailey - Front-End Developer Nanodegree</title>
     <link rel="stylesheet" href="./css/styles.css" />
     <link
-      href="https://fonts.googleapis.com/css?family=Rokkitt|Titillium+Web"
+      href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700"
       rel="stylesheet"
     />
     <script src="./js/data.js"></script>
@@ -17,8 +17,40 @@
   </head>
 
   <body>
+    <div id="main-content" class="blurred">
+      <header>
+        <h1>Memory Game</h1>
+        <p id="subtitle">By Rob Bailey</p>
+      </header>
+      <section id="game-container">
+        <div id="stats-container">
+          <div id="reset-container">
+            <button id="reset-game" class="btn">Restart</button>
+          </div>
+          <div id="timer-container">
+            <p>Time Elapsed: <span id="timer"></span> seconds</p>
+          </div>
+          <div id="move-counter">
+            <p>Number of Moves: <span id="moves">0</span></p>
+          </div>
+        </div>
+        <div id="game-grid" class="flex-container"></div>
+      </section>
+      <footer>
+        <div id="footer-wrapper">
+          <div class="footer-content">
+            <p>
+              Created by Rob Bailey for Project 2 of the Udacity Front-End
+              Developer Nanodegree
+            </p>
+          </div>
+          <div class="attributations">
+            <p>Images by smalllikeart from www.flaticon.com</p>
+          </div>
+        </div>
+      </footer>
     </div>
-    <div class="game-options modal">
+    <div class="modal" id="game-options">
       <h2>New Game</h2>
       <div class="options-container">
         <button class="btn" id="easy-start">Easy</button>
@@ -26,24 +58,21 @@
         <button class="btn" id="hard-start">Hard</button>
       </div>
     </div>
-    <div id="main-content" class="blurred">
-    <header><h1>Memory Game</h1></header>
-    <section id="game-container">
-      <div id="reset-container">
-        <button id="reset-game">Restart</button>
-      <div id="game-grid" class="flex-container"></div>
-      <div id="timer-container"><p>Time Elapsed: <span id="timer"></span></p></div>
-      <div id="move-counter"><p><span id="moves"></span> Moves</p></div>
-    </section>
-    <footer>
-      <div id="footer-wrapper" class="flex-container">
-        <div id="copyright"></div>
-        <div class="attributations">
-          <p>Images by smalllikeart from www.flaticon.com</p>
-        </div>
+    <div class="modal" id="game-complete">
+      <h2>Game Completed</h2>
+      <div class="stars-container"></div>
+      <div class="game-stats">
+        <p>
+          <strong>Number of Moves: </strong><span id="number-of-moves"></span>
+        </p>
+        <p>
+          <strong>Time Taken: </strong><span id="time-taken"></span> seconds
+        </p>
+        <p>
+          <strong>Incorrect Moves: </strong><span id="incorrect-moves"></span>
+        </p>
       </div>
-    </footer>
-  </div>
+    </div>
     <!-- Load the main script at the bottom so it doesn't run too soon. -->
     <script src="./js/main.js"></script>
   </body>
