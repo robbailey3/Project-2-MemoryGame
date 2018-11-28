@@ -3,22 +3,22 @@ const levels = {
     id: 1,
     name: 'Easy',
     pairs: 6,
-    oneStar: 10,
-    twoStar: 6
+    oneStar: 12,
+    twoStar: 8
   },
   medium: {
     id: 2,
     name: 'Medium',
     pairs: 8,
-    oneStar: 10,
-    twoStar: 14
+    oneStar: 16,
+    twoStar: 11
   },
   hard: {
     id: 3,
     name: 'Hard',
     pairs: 12,
-    oneStar: 16,
-    twoStar: 24
+    oneStar: 24,
+    twoStar: 18
   }
 };
 

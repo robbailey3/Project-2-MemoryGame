@@ -9,27 +9,31 @@
     document.querySelector('#game-options').style.display = 'block';
     document.querySelector('#main-content').classList.add('blurred');
   };
-  document.querySelector('#easy-start').addEventListener('click', () => {
-    hideModal();
-    game.init(GAME_HOST, levels.easy);
-  });
-  document.querySelector('#normal-start').addEventListener('click', () => {
-    hideModal();
-    game.init(GAME_HOST, levels.medium);
-  });
-  document.querySelector('#hard-start').addEventListener('click', () => {
-    hideModal();
-    game.init(GAME_HOST, levels.hard);
-  });
-  document.querySelector('#reset-game').addEventListener('click', () => {
-    game.endGame();
-    showModal();
-  });
-  document.querySelector('#stats-reset').addEventListener('click', () => {
-    game.hideGameCompleteModal();
-    showModal();
-  });
-  document.querySelector('#view-highscores').addEventListener('click', () => {
-    game.showHighscores();
+  document.body.addEventListener('click', $event => {
+    switch ($event.target.id) {
+      case 'easy-start':
+        hideModal();
+        game.init(GAME_HOST, levels.easy);
+        break;
+      case 'normal-start':
+        hideModal();
+        game.init(GAME_HOST, levels.medium);
+        break;
+      case 'hard-start':
+        hideModal();
+        game.init(GAME_HOST, levels.hard);
+        break;
+      case 'reset-game':
+        game.endGame();
+        showModal();
+        break;
+      case 'stats-reset':
+        game.hideGameCompleteModal();
+        showModal();
+        break;
+      case 'view-highscores':
+        game.showHighscores();
+        break;
+    }
   });
 })();

@@ -223,9 +223,24 @@ header #subtitle {
   -webkit-animation: flash 0.5s 1;
   animation: flash 0.5s 1;
 }
+#stars-container{
+  padding: 8px 2px;
+}
+#stars-container .star-container{
+  width: calc(100% / 3);
+  text-align: center;
+}
+#stars-container .star{
+  max-height: 40px;
+}
 #highscores{
-  display: none;
   width: 100%;
+  max-height: 0px;
+  transition: 0.3s;
+  overflow: hidden;
+}
+#highscores.active {
+  max-height: 100px;
 }
 #highscores strong{
   text-transform: uppercase;

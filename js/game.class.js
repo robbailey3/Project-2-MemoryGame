@@ -66,6 +66,12 @@ class Game {
     this.endTimer();
     this.hideStatsModal();
   }
+  /**
+   *
+   * * Handle the user's click.
+   * @param {Card} card
+   * @memberof Game
+   */
   handleClick(card) {
     if (!this.gameRunning) {
       // Start the game on first click
@@ -83,6 +89,11 @@ class Game {
       this.checkForMatch();
     }
   }
+  /**
+   *
+   * * Check if the selected cards match.
+   * @memberof Game
+   */
   checkForMatch() {
     console.log(this);
     if (this.selectedCards[0].cardData == this.selectedCards[1].cardData) {
@@ -128,8 +139,18 @@ class Game {
   }
   gameComplete() {
     this.endTimer();
+    this.calculateStars();
     this.hideStatsModal();
     this.gameCompleteModal();
+  }
+  calculateStars(){
+    if(this.moves > this.level.oneStar){
+      this.displayStars(1);      
+    }else if (this.moves > this.level.twoStar){
+      this.displayStars(2);
+    }else{
+      this.displayStars(3);
+    }
   }
   gameCompleteModal() {
     this.showGameCompleteModal();
@@ -165,8 +186,19 @@ class Game {
     }
     localStorage.setItem('highscores', JSON.stringify(this.storedScores));
   }
+  displayStars(numberOfStars) {
+    for(let i = 0; i < numberOfStars; i++){
+      let div = document.createElement('div');
+      div.classList.add('star-container');
+      let star = document.createElement('img');
+      star.classList.add('star');
+      star.src = './img/star.png';
+      div.appendChild(star);
+      document.querySelector('#stars-container').appendChild(div);
+    }
+  }
   showHighscores() {
-    document.querySelector('#highscores').style.display = 'block';
+    document.querySelector('#highscores').classList = 'active';
     document.querySelector('#easy-score').innerText = this.storedScores.Easy;
     document.querySelector(
       '#medium-score'
