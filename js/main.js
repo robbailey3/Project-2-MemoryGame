@@ -1,6 +1,6 @@
 (function() {
   const GAME_HOST = '#game-grid'; // The selector of the HTML element which will contain the game content
-  const GAME = new Game();
+  const GAME = new Game(); // The game object
   const hideModal = () => {
     document.querySelector('#game-options').style.display = 'none';
     document.querySelector('#main-content').classList.remove('blurred');
@@ -10,6 +10,7 @@
     document.querySelector('#main-content').classList.add('blurred');
   };
   document.body.addEventListener('click', ($event) => {
+    // Listen for click events
     switch ($event.target.id) {
       case 'easy-start':
         hideModal();
@@ -34,6 +35,13 @@
       case 'view-highscores':
         GAME.showHighscores();
         break;
+    }
+  });
+  document.addEventListener('keypress', ($event) => {
+    // Quick keyboard shortcut to reset the game (Shift + r);
+    if ($event.key === 'R' || $event.keyCode === 82) {
+      GAME.endGame();
+      showModal();
     }
   });
 })();

@@ -1,10 +1,10 @@
 /**
- * * Class for the cards
+ * @description Class for the cards
  * @class Card
  */
 class Card {
   /**
-   * * Creates an instance of Card.
+   * @description Creates an instance of Card.
    * @param {object} cardData
    * @memberof Card
    */
@@ -14,7 +14,7 @@ class Card {
     this.html.append(this.createCardFront(), this.createCardBack());
   }
   /**
-   * * Create the div container for the card
+   * @description Create the div container for the card
    * @return {HTMLElement} cardContainer
    * @memberof Card
    */
@@ -24,7 +24,7 @@ class Card {
     return cardContainer;
   }
   /**
-   * * Create the HTML for the front of the card
+   * @description Create the HTML for the front of the card
    * @return {HTMLElement} cardFront
    * @memberof Card
    */
@@ -37,7 +37,7 @@ class Card {
     return cardFront;
   }
   /**
-   * * Create the HTML for the back of the card
+   * @description Create the HTML for the back of the card
    * @return {HTMLElement} cardBack
    * @memberof Card
    */

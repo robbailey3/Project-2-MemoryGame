@@ -10,6 +10,7 @@ body {
   background: #fff;
   font-family: 'Cabin', sans-serif;
   font-size: 18px;
+  color: #333;
 }
 
 input,
@@ -62,9 +63,14 @@ button {
   font-family: 'Titillium Web', sans-serif;
   font-size: 12px;
   letter-spacing: 2px;
-  margin: 10px;
+  margin: 3px;
   padding: 8px 12px;
   text-transform: uppercase;
+}
+@media screen and (min-width: 768px) {
+  .btn {
+    margin: 10px;
+  }
 }
 .flex-container {
   display: -webkit-box;
@@ -94,6 +100,7 @@ header #subtitle {
 }
 /* Game Options */
 #stats-container {
+  font-size: 18px;
   width: 100%;
   max-height: 0px;
   padding: 16px;
@@ -103,13 +110,20 @@ header #subtitle {
   -webkit-transition: 0.4s;
   -o-transition: 0.4s;
   transition: 0.4s;
+  text-align: center;
+  margin: 10px auto;
+  max-width: 200px;
 }
 @media screen and (min-width: 1600px) {
   #stats-container {
+    font-size: 22px;
     position: absolute;
     right: 25px;
-    bottom: 70px;
-    width: 250px;
+    bottom: 80px;
+    max-width: 350px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.5);
   }
 }
 #stats-container.active {

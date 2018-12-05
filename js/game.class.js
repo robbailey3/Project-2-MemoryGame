@@ -213,8 +213,7 @@ class Game {
     }
   }
   /**
-   *
-   * @description
+   * @description Update the number of stars displaying to the user whilst the game is running.
    * @memberof Game
    */
   updateStarDisplay() {
@@ -292,7 +291,7 @@ class Game {
    */
   displayStars(numberOfStars) {
     const container = document.querySelector('#stars-container');
-    container.innerHTML = '';
+    container.innerHTML = ''; // Clear the element
     for (let i = 0; i < numberOfStars; i++) {
       const div = document.createElement('div');
       div.classList.add('star-container');
