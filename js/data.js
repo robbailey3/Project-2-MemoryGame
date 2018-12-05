@@ -1,74 +1,80 @@
+/**
+ * * NOTE: The star thresholds are based on:
+ * * * One Star = Math.floor(totalcards * 1.2);
+ * * * Two Star = Math.floor(totalcards * 0.8);
+ *  */
+
 const levels = {
   easy: {
     id: 1,
     name: 'Easy',
     pairs: 6,
-    oneStar: 12,
-    twoStar: 8
+    oneStar: 14,
+    twoStar: 9,
   },
   medium: {
     id: 2,
     name: 'Medium',
     pairs: 8,
-    oneStar: 16,
-    twoStar: 11
+    oneStar: 19,
+    twoStar: 12,
   },
   hard: {
     id: 3,
     name: 'Hard',
     pairs: 12,
-    oneStar: 24,
-    twoStar: 18
-  }
+    oneStar: 28,
+    twoStar: 19,
+  },
 };
 
 const cards = [
   {
     name: 'bear',
-    img: 'bear.png'
+    img: 'bear.png',
   },
   {
     name: 'butterfly',
-    img: 'butterfly.png'
+    img: 'butterfly.png',
   },
   {
     name: 'camel',
-    img: 'camel.png'
+    img: 'camel.png',
   },
   {
     name: 'cat',
-    img: 'cat.png'
+    img: 'cat.png',
   },
   {
     name: 'chicken',
-    img: 'chicken.png'
+    img: 'chicken.png',
   },
   {
     name: 'cow',
-    img: 'cow.png'
+    img: 'cow.png',
   },
   {
     name: 'crab',
-    img: 'crab.png'
+    img: 'crab.png',
   },
   {
     name: 'crocodile',
-    img: 'crocodile.png'
+    img: 'crocodile.png',
   },
   {
     name: 'deer',
-    img: 'deer.png'
+    img: 'deer.png',
   },
   {
     name: 'dog',
-    img: 'dog.png'
+    img: 'dog.png',
   },
   {
     name: 'elephant',
-    img: 'elephant.png'
+    img: 'elephant.png',
   },
   {
     name: 'koala',
-    img: 'koala.png'
-  }
+    img: 'koala.png',
+  },
 ];

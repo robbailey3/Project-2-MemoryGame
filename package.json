@@ -1,11 +1,7 @@
 {
   "name": "project-2-memorygame",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "A memory game for project 2 of the Udacity Front-End Developer NanoDegree",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/robbailey3/Project-2-MemoryGame.git"
